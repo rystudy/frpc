@@ -1,6 +1,8 @@
 #!/bin/sh
-FRP_VERSION="0.33.0"
-REPO="stilleshan/frpc"
+FRP_VERSION=`curl -Ls -o /dev/null -w %{url_effective} https://github.com/fatedier/frp/releases/latest)`
+FRP_VERSION=`echo $FRP_VERSION | grep -Eo '[0-9]+.*'`
+echo "最新版本：$FRP_VERSION"
+REPO="rystudy/frps"
 WORK_PATH=$(dirname $(readlink -f $0))
 
 # 创建frp文件夹
